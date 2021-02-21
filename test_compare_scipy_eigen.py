@@ -24,7 +24,6 @@ class TestCustomScipyBaseSolver(KratosUnittest.TestCase):
     def test_eigen_with_constraints(self):
         analysis_parameters_scipy = KratosMultiphysics.Parameters("""{
             "problem_data"    : {
-                "problem_name" : "shaft_beam",
                 "parallel_type" : "OpenMP",
                 "echo_level"    : 1,
                 "start_time"    : 0.0,
@@ -35,12 +34,8 @@ class TestCustomScipyBaseSolver(KratosUnittest.TestCase):
                 "model_part_name"          : "Structure",
                 "domain_size"              : 3,
                 "model_import_settings"    : {
-                    "input_type"     : "mdpa"
-                    "input_filename" : "shaft_beam"
-                },      
-            "material_import_settings"        : {
-            "materials_filename" : "StructuralMaterials.json"
-        },
+                    "input_type"     : "use_input_model_part"
+                },
                 "time_stepping"            : {
                     "time_step" : 1.1
                 },
@@ -145,7 +140,7 @@ def SetupSystem(model_part):
     props[StructuralMechanicsApplication.TORSIONAL_INERTIA] = 0.00001
     props[StructuralMechanicsApplication.I22] = 0.00002
     props[StructuralMechanicsApplication.I33] = 0.00001
-    props[StructuralMechanicsApplication.USE_CONSISTENT_MASS_MATRIX] = True
+    props[KratosMultiphysics.COMPUTE_LUMPED_MASS_MATRIX] = False
 
     for i_elem, connectivity in enumerate(element_connectivities):
         model_part.CreateNewElement("CrLinearBeamElement3D2N", i_elem+1, connectivity, props)
