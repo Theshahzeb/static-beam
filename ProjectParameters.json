@@ -1,66 +1,45 @@
 {
-    "problem_data"     : {
-        "problem_name"  : "shaft_beam",
-        "parallel_type" : "OpenMP",
-        "echo_level"    : 1,
-        "start_time"    : 0.0,
-        "end_time"      : 1.0
+    "analysis_type": "non_linear",
+    "auxiliary_dofs_list": [],
+    "auxiliary_reaction_list": [],
+    "auxiliary_variables_list": [],
+    "buffer_size": 2,
+    "builder_and_solver_settings": {
+        "advanced_settings": {},
+        "use_block_builder": false,
+        "use_lagrange_BS": false
     },
-    "solver_settings"  : {
-        "solver_type"                     : "KratosMultiphysics.StructuralMechanicsApplication.structural_mechanics_custom_scipy_base_solver",
-        "model_part_name"                 : "Structure",
-        "domain_size"                     : 3,
-        "echo_level"                      : 0,
-        "analysis_type"                   : "non_linear",
-        "model_import_settings"           : {
-            "input_type"     : "mdpa",
-            "input_filename" : "shaft_beam"
-        },
-        "material_import_settings"        : {
-            "materials_filename" : "StructuralMaterials.json"
-        },
-        "time_stepping"                   : {
-            "time_step" : 1.1
-        },
-        "line_search"                     : false,
-        "convergence_criterion"           : "residual_criterion",
-        "displacement_relative_tolerance" : 0.0001,
-        "displacement_absolute_tolerance" : 1e-9,
-        "residual_relative_tolerance"     : 0.0001,
-        "residual_absolute_tolerance"     : 1e-9,
-        "max_iteration"                   : 10,
-        "rotation_dofs"                   : true,
-        "volumetric_strain_dofs"          : false,
-        "builder_and_solver_settings" : {
-            "use_block_builder"     : false
-            }
+    "clear_storage": false,
+    "compute_reactions": false,
+    "convergence_criterion": "residual_criterion",
+    "displacement_absolute_tolerance": 1e-09,
+    "displacement_control": false,
+    "displacement_relative_tolerance": 0.0001,
+    "domain_size": 3,
+    "echo_level": 0,
+    "line_search": false,
+    "linear_solver_settings": {},
+    "material_import_settings": {
+        "materials_filename": "StructuralMaterials.json"
     },
-    "processes"        : {
-        "constraints_process_list" : [{
-            "python_module" : "assign_vector_variable_process",
-            "kratos_module" : "KratosMultiphysics",
-            "process_name"  : "AssignVectorVariableProcess",
-            "Parameters"    : {
-                "model_part_name" : "Structure.DISPLACEMENT_fixed",
-                "variable_name"   : "DISPLACEMENT",
-                "interval"        : [0.0,"End"],
-                "constrained"     : [true,true,true],
-                "value"           : [0.0,0.0,0.0]
-            }
-        }],
-        "loads_process_list"       : [{
-            "python_module" : "assign_vector_by_direction_to_condition_process",
-            "kratos_module" : "KratosMultiphysics",
-            "check"         : "DirectorVectorNonZero direction",
-            "process_name"  : "AssignVectorByDirectionToConditionProcess",
-            "Parameters"    : {
-                "model_part_name" : "Structure.PointLoad3D_load",
-                "variable_name"   : "POINT_LOAD",
-                "interval"        : [0.0,"End"],
-                "modulus"         : 1000.0,
-                "direction"       : [0.0,-1.0,0.0]
-            }
-        }],
-        "list_other_processes"     : []
-    }
+    "max_iteration": 10,
+    "model_import_settings": {
+        "input_filename": "shaft_beam",
+        "input_type": "mdpa"
+    },
+    "model_part_name": "structure",
+    "move_mesh_flag": true,
+    "multi_point_constraints_used": false,
+    "pressure_dofs": false,
+    "reform_dofs_at_each_step": false,
+    "residual_absolute_tolerance": 1e-09,
+    "residual_relative_tolerance": 0.0001,
+    "rotation_dofs": true,
+    "scheme_type": "dynamic",
+    "solver_type": "KratosMultiphysics.StructuralMechanicsApplication.structural_mechanics_custom_scipy_base_solver",
+    "time_stepping": {
+        "time_step" : 1.1
+    },
+    "use_old_stiffness_in_first_iteration": false,
+    "volumetric_strain_dofs": false
 }

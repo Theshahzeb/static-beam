@@ -200,5 +200,6 @@ with open("ProjectParameters.json", 'r') as parameter_file:
     parameters = KratosMultiphysics.Parameters(parameter_file.read())
 model = KratosMultiphysics.Model()
 simulation = CustomScipyBaseSolver(model, parameters)        
-simulation.Run()
+#simulation.Run()
+simulation.SolveSolutionStep()
 print(simulation.M)
