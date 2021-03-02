@@ -89,6 +89,7 @@ class CustomScipyBaseSolver(MechanicalSolver):
         aux = self.get_mechanical_solution_strategy().GetSystemMatrix()
         space.SetToZeroMatrix(aux)
 
+
         # Create dummy vectors
         b = space.CreateEmptyVectorPointer()
         space.ResizeVector( b, space.Size1(aux) )

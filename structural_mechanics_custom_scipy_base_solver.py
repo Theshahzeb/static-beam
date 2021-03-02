@@ -63,6 +63,7 @@ class CustomScipyBaseSolver(MechanicalSolver):
         eigen_scheme = self.get_solution_scheme() # The scheme defines the matrices
         computing_model_part = self.GetComputingModelPart()
         builder_and_solver = self.get_builder_and_solver()
+#        linear_solver = self.get_linear_solver()
 
         return KratosMultiphysics.ResidualBasedLinearStrategy(computing_model_part,
                                                               eigen_scheme,
@@ -71,6 +72,7 @@ class CustomScipyBaseSolver(MechanicalSolver):
                                                               False,
                                                               False,
                                                               False )
+        
 
     def _MassMatrixComputation(self):
         space = KratosMultiphysics.UblasSparseSpace()
@@ -130,59 +132,60 @@ class CustomScipyBaseSolver(MechanicalSolver):
 
         return K
 
-    def _AssignVariables(self, eigenvalues, eigenvectors):
-        num_eigenvalues = eigenvalues.size
-        # Store eigenvalues in process info
-        eigenvalue_vector = self.GetComputingModelPart().ProcessInfo.GetValue(StructuralMechanicsApplication.EIGENVALUE_VECTOR)
-        eigenvalue_vector.Resize(num_eigenvalues)
-        for i in range(num_eigenvalues):
-            eigenvalue_vector[i] = eigenvalues[i]
-        self.GetComputingModelPart().ProcessInfo.SetValue(StructuralMechanicsApplication.EIGENVALUE_VECTOR, eigenvalue_vector)
-
-        # Store eigenvectors in nodes
-        for node in self.GetComputingModelPart().Nodes:
-            node_eigenvectors = node.GetValue(StructuralMechanicsApplication.EIGENVECTOR_MATRIX)
-            if self.settings["rotation_dofs"].GetBool() == True:
-                dofs = [node.GetDof(KratosMultiphysics.ROTATION_X),
-                        node.GetDof(KratosMultiphysics.ROTATION_Y),
-                        node.GetDof(KratosMultiphysics.ROTATION_Z),
-                        node.GetDof(KratosMultiphysics.DISPLACEMENT_X),
-                        node.GetDof(KratosMultiphysics.DISPLACEMENT_Y),
-                        node.GetDof(KratosMultiphysics.DISPLACEMENT_Z)]
-
-                node_eigenvectors.Resize(num_eigenvalues, 6 )
-            else:
-                dofs = [node.GetDof(KratosMultiphysics.DISPLACEMENT_X),
-                        node.GetDof(KratosMultiphysics.DISPLACEMENT_Y),
-                        node.GetDof(KratosMultiphysics.DISPLACEMENT_Z)]
-                node_eigenvectors.Resize(num_eigenvalues, 3 )
-
-            # Fill the eigenvector matrix
-            for i in range(num_eigenvalues):
-                j = -1
-                for dof in dofs:
-                    j = j + 1
-                    if dof.IsFixed():
-                        node_eigenvectors[i,j] = 0.0
-                    else:
-                        node_eigenvectors[i,j] = eigenvectors[dof.EquationId,i]
-            node.SetValue(StructuralMechanicsApplication.EIGENVECTOR_MATRIX, node_eigenvectors)
+#    def _AssignVariables(self, eigenvalues, eigenvectors):
+#        num_eigenvalues = eigenvalues.size
+#        # Store eigenvalues in process info
+#        eigenvalue_vector = self.GetComputingModelPart().ProcessInfo.GetValue(StructuralMechanicsApplication.EIGENVALUE_VECTOR)
+#        eigenvalue_vector.Resize(num_eigenvalues)
+#        for i in range(num_eigenvalues):
+#            eigenvalue_vector[i] = eigenvalues[i]
+#        self.GetComputingModelPart().ProcessInfo.SetValue(StructuralMechanicsApplication.EIGENVALUE_VECTOR, eigenvalue_vector)
+#
+#        # Store eigenvectors in nodes
+#        for node in self.GetComputingModelPart().Nodes:
+#            node_eigenvectors = node.GetValue(StructuralMechanicsApplication.EIGENVECTOR_MATRIX)
+#            if self.settings["rotation_dofs"].GetBool() == True:
+#                dofs = [node.GetDof(KratosMultiphysics.ROTATION_X),
+#                        node.GetDof(KratosMultiphysics.ROTATION_Y),
+#                        node.GetDof(KratosMultiphysics.ROTATION_Z),
+#                        node.GetDof(KratosMultiphysics.DISPLACEMENT_X),
+#                        node.GetDof(KratosMultiphysics.DISPLACEMENT_Y),
+#                        node.GetDof(KratosMultiphysics.DISPLACEMENT_Z)]
+#
+#                node_eigenvectors.Resize(num_eigenvalues, 6 )
+#            else:
+#                dofs = [node.GetDof(KratosMultiphysics.DISPLACEMENT_X),
+#                        node.GetDof(KratosMultiphysics.DISPLACEMENT_Y),
+#                        node.GetDof(KratosMultiphysics.DISPLACEMENT_Z)]
+#                node_eigenvectors.Resize(num_eigenvalues, 3 )
+#
+#            # Fill the eigenvector matrix
+#            for i in range(num_eigenvalues):
+#                j = -1
+#                for dof in dofs:
+#                    j = j + 1
+#                    if dof.IsFixed():
+#                        node_eigenvectors[i,j] = 0.0
+#                    else:
+#                        node_eigenvectors[i,j] = eigenvectors[dof.EquationId,i]
+#            node.SetValue(StructuralMechanicsApplication.EIGENVECTOR_MATRIX, node_eigenvectors)
 
     def SolveSolutionStep(self):
         """This method must be overriden in derived class.
         The computation of the egenvalue problem is only an example how this solver is to be used.
         """
-        self.M = self._MatrixComputation(mat="mass")
-        self.K = self._MatrixComputation(mat="stiff")
+#        self.M = self._MatrixComputation(mat="mass")
+#        self.K = self._MatrixComputation(mat="stiff")
+
         
         ## Obtain scipy matrices
-#        M = self._MassMatrixComputation()
-#        K = self._StiffnessMatrixComputation()
-#        print("Mass matrix:")
-#        print(M)
+        M = self._MassMatrixComputation()
+        K = self._StiffnessMatrixComputation()
+        print("Mass matrix:")
+        print(M)
 #        
-#        print("Stiffness matrix:")
-#        print(K)
+        print("Stiffness matrix:")
+        print(K)
 #
 #        ## Compute eigenvalues and eigenvectors
 #        tolerance = 1e-6

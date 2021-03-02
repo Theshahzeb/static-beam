@@ -1,6 +1,6 @@
 BeginZE /home/shahzeb/Documents/studyproject/shaft_beam.gid/shaft_beam.vv
    x -63.4322624206542969 260.32403564453125
-   y 107.536331176757812 -110.740509033203125
+   y 121.22650146484375 -124.430679321289062
    z -331.6624755859375 331.6624755859375
    e 110.554161071777344
    v 0 0 0
@@ -30,4 +30,8 @@ BeginZE /home/shahzeb/Documents/studyproject/shaft_beam.gid/shaft_beam.vv
    OGLStereo(LeftEyeDistance) 1 0 0 1
    OGLStereo(RightEyeDistance) 0 1 1 1
 EndZE /home/shahzeb/Documents/studyproject/shaft_beam.gid/shaft_beam.vv
+
+BeginMirror
+   Mirror 0 Angle 0.0 AngleFake -15.0 SizeFactor 2.0 HeightOffset 0.25 Color #d9e5f24d Backlight Off EdgeStyle No Type Scene DrawMode Mirror
+EndMirror
 

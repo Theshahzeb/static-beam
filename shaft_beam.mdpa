@@ -11,26 +11,7 @@ End Nodes
 Begin Elements CrLinearBeamElement3D2N// GUI group identifier: body
 End Elements
 
-Begin Conditions PointLoadCondition3D1N// GUI group identifier: load
-End Conditions
-
 Begin SubModelPart Parts_Beam_body // Group body // Subtree Parts_Beam
-    Begin SubModelPartNodes
-    End SubModelPartNodes
-    Begin SubModelPartElements
-    End SubModelPartElements
-    Begin SubModelPartConditions
-    End SubModelPartConditions
-End SubModelPart
-Begin SubModelPart DISPLACEMENT_fixed // Group fixed // Subtree DISPLACEMENT
-    Begin SubModelPartNodes
-    End SubModelPartNodes
-    Begin SubModelPartElements
-    End SubModelPartElements
-    Begin SubModelPartConditions
-    End SubModelPartConditions
-End SubModelPart
-Begin SubModelPart PointLoad3D_load // Group load // Subtree PointLoad3D
     Begin SubModelPartNodes
     End SubModelPartNodes
     Begin SubModelPartElements

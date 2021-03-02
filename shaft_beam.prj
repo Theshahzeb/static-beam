@@ -3,11 +3,12 @@
   <pre>
     <layer_to_use name="Layer0"/>
     <groups>
-      <group id="1" name="body" color="#80802aff" allowed_types="#32" allowed_element_types="#7fe"/>
-      <group id="2" name="fixed" color="#0000ffff" allowed_element_types="#7fe"/>
-      <group id="3" name="load" color="#ff00ffff" allowed_types="#f1" allowed_element_types="#7fe"/>
+      <group id="1" name="body" color="#80802aff" allowed_types="#32" allowed_element_types="#7f"/>
+      <group id="2" name="fixed" color="#0000ffff" allowed_element_types="#7f"/>
+      <group id="3" name="load" color="#ff00ffff" allowed_types="#f1" allowed_element_types="#7f"/>
       <group id="4" name="Total" color="#00ffffff" parent_id="2" state="hidden"/>
       <group id="5" name="Total" color="#a60021ff" parent_id="3" state="hidden"/>
+      <group id="6" name="Group0" color="#80802aff"/>
     </groups>
     <entities_groups>
       <entities_group name="points">
