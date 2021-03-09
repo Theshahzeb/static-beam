@@ -1,0 +1,55 @@
+{
+    "analysis_type": "non_linear",
+    "auxiliary_dofs_list": [],
+    "auxiliary_reaction_list": [],
+    "auxiliary_variables_list": [],
+    "buffer_size": 2,
+    "builder_and_solver_settings": {
+        "advanced_settings": {},
+        "use_block_builder": false,
+        "use_lagrange_BS": false
+    },
+    "clear_storage": false,
+    "compute_reactions": false,
+    "python_module" : "assign_vector_variable_process",
+    "kratos_module" : "KratosMultiphysics",
+    "process_name"  : "AssignVectorVariableProcess",
+    "Parameters"    : {
+        "model_part_name" : "Structure.DISPLACEMENT_fixed",
+        "variable_name"   : "DISPLACEMENT",
+        "interval"        : [0.0,"End"],
+        "constrained"     : [true,true,true],
+        "value"           : [0.0,0.0,0.0]
+        },
+    "convergence_criterion": "residual_criterion",
+    "displacement_absolute_tolerance": 1e-09,
+    "displacement_control": false,
+    "displacement_relative_tolerance": 0.0001,
+    "domain_size": 3,
+    "echo_level": 0,
+    "line_search": false,
+    "linear_solver_settings": {},
+    "material_import_settings": {
+        "materials_filename": "StructuralMaterials.json"
+    },
+    "max_iteration": 10,
+    "model_import_settings": {
+        "input_filename": "shaft_beam",
+        "input_type": "mdpa"
+    },
+    "model_part_name": "structure",
+    "move_mesh_flag": true,
+    "multi_point_constraints_used": false,
+    "pressure_dofs": false,
+    "reform_dofs_at_each_step": false,
+    "residual_absolute_tolerance": 1e-09,
+    "residual_relative_tolerance": 0.0001,
+    "rotation_dofs": true,
+    "scheme_type": "dynamic",
+    "solver_type": "KratosMultiphysics.StructuralMechanicsApplication.structural_mechanics_custom_scipy_base_solver",
+    "time_stepping": {
+        "time_step" : 1.1
+    },
+    "use_old_stiffness_in_first_iteration": false,
+    "volumetric_strain_dofs": false
+}

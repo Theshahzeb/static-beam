@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gid version="15.0">
+  <pre>
+    <layer_to_use name="Layer0"/>
+    <groups>
+      <group id="1" name="volume" color="#ffaaaaff" allowed_types="#38" allowed_element_types="#7fe"/>
+      <group id="2" name="fixed" color="#0000ffff" allowed_element_types="#7fe"/>
+      <group id="3" name="load" color="#ff00ffff" allowed_types="#f1" allowed_element_types="#7fe"/>
+      <group id="4" name="Total" color="#00ffffff" parent_id="2" state="hidden"/>
+      <group id="5" name="Total" color="#a60021ff" parent_id="3" state="hidden"/>
+    </groups>
+    <entities_groups>
+      <entities_group name="points">
+        <vector name="entity_ids" length="1" type="integer">3</vector>
+        <vector name="entity_num_groups" length="1" type="ushort">2</vector>
+        <vector name="entity_groups" length="2" type="ushort">3 5</vector>
+      </entities_group>
+      <entities_group name="surfaces">
+        <vector name="entity_ids" length="1" type="integer">6</vector>
+        <vector name="entity_num_groups" length="1" type="ushort">2</vector>
+        <vector name="entity_groups" length="2" type="ushort">2 4</vector>
+      </entities_group>
+      <entities_group name="volumes">
+        <vector name="entity_ids" length="1" type="integer">1</vector>
+        <vector name="entity_num_groups" length="1" type="ushort">1</vector>
+        <vector name="entity_groups" length="1" type="ushort">1</vector>
+      </entities_group>
+    </entities_groups>
+  </pre>
+</gid>

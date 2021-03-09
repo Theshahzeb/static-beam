@@ -1,0 +1,37 @@
+BeginZE /home/shahzeb/Documents/studyproject/solid_beam.gid/solid_beam.vv
+   x -1.80066883563995361 2.75408411026000977
+   y 1.82483375072479248 -1.63118469715118408
+   z -18.7044448852539062 18.7044448852539062
+   e 5.52770805358886719
+   v -0.122225411369099826 0.143669801636128136 0.239913009272531785
+   r 0.952292856686056122
+   m 0.843601465225219727 -0.49205508828163147 0.214984521269798279 0 0.421814680099487305 0.855005383491516113 0.301725268363952637 0 -0.33227837085723877 -0.163852259516716003 0.92883986234664917 0 0 0 0 1
+   c 0.5 0.5 0
+   pd 0
+   pno 0
+   pfo 0
+   pf 4
+   pv 0
+   NowUse 0
+   DrawingType 0
+   LightVector 90 90 150 0
+   OGLShadow(UseShadows) 0
+   OGLShadow(RenderMode) RenderNice
+   OGLShadow(ShadowBias) -0.002
+   OGLShadow(AmbientShadows) 1
+   OGLShadow(UseFBO) 1
+   OGLShadow(FBOSize) 2048
+   OGLShadow(DimmedLightFactor) 0.02
+   OGLStereo(UseStereo) 0
+   OGLStereo(RelativeEyeDistance) 1
+   OGLStereo(FlipEyes) 0
+   OGLStereo(StereoMode) AnaglyphColors
+   OGLStereo(EyeDistance) 0.075
+   OGLStereo(LeftEyeDistance) 1 0 0 1
+   OGLStereo(RightEyeDistance) 0 1 1 1
+EndZE /home/shahzeb/Documents/studyproject/solid_beam.gid/solid_beam.vv
+
+BeginMirror
+   Mirror 0 Angle 0.0 AngleFake -15.0 SizeFactor 2.0 HeightOffset 0.25 Color #d9e5f24d Backlight Off EdgeStyle No Type Scene DrawMode Mirror
+EndMirror
+

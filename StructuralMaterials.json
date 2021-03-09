@@ -11,7 +11,7 @@
                 "YOUNG_MODULUS"     : 206900000000.0,
                 "POISSON_RATIO"     : 0.29,
                 "CROSS_AREA"        : 1.0,
-                "TORSIONAL_INERTIA" : 1.0,
+                "TORSIONAL_INERTIA" : 0.16,
                 "I22"               : 1.0,
                 "I33"               : 1.0
             },
