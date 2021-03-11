@@ -12,6 +12,9 @@
         "domain_size"                     : 3,
         "echo_level"                      : 0,
         "analysis_type"                   : "non_linear",
+        "builder_and_solver_settings": {
+            "use_block_builder": false
+            },
         "model_import_settings"           : {
             "input_type"     : "mdpa",
             "input_filename" : "solid_beam"
