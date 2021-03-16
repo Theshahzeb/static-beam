@@ -196,12 +196,12 @@ class CustomScipyBaseSolver(StructuralMechanicsAnalysis):
     # def printstiffMat(self, K):
     #     print(K)
 
-with open("ProjectParameters.json", 'r') as parameter_file:
-    parameters = KratosMultiphysics.Parameters(parameter_file.read())
-model = KratosMultiphysics.Model()
-# simulation = CustomScipyBaseSolver(model, parameters)
-simulation = StructuralMechanicsAnalysis(model, parameters)        
-simulation.Run()
-print(simulation)
-print("done")
-print("-"*50)
+# with open("ProjectParameters.json", 'r') as parameter_file:
+#     parameters = KratosMultiphysics.Parameters(parameter_file.read())
+# model = KratosMultiphysics.Model()
+# # simulation = CustomScipyBaseSolver(model, parameters)
+# simulation = StructuralMechanicsAnalysis(model, parameters)        
+# simulation.Run()
+# print(simulation)
+# print("done")
+# print("-"*50)
